@@ -1,0 +1,27 @@
+-- Function to change the Wallet value
+local function changeWalletValue()
+    -- Get the player from the Players service
+    local player = game.Players:FindFirstChild(playerName)
+    if player then
+        -- Get the Valuestats folder from the player
+        local valueStatsFolder = player:FindFirstChild("Valuestats")
+        if valueStatsFolder then
+            -- Get the Wallet value object from the Valuestats folder
+            local wallet = valueStatsFolder:FindFirstChild("Wallet")
+            if wallet and wallet:IsA("IntValue") then
+                -- Change the Wallet value
+                wallet.Value = newWalletValue
+                print("Wallet value changed successfully!")
+            else
+                warn("Wallet value object not found or not an IntValue.")
+            end
+        else
+            warn("Valuestats folder not found.")
+        end
+    else
+        warn("Player not found.")
+    end
+end
+
+-- Call the function to change the Wallet value
+changeWalletValue()
